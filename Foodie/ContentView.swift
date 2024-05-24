@@ -38,7 +38,7 @@ struct ContentView: View {
             
             .navigationViewStyle(StackNavigationViewStyle())
             .fullScreenCover(isPresented: $changeScreen) {
-                Shop()
+                Pages()
             }
                 Button() {
                     changeScreen = true

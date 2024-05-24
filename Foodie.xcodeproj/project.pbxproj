@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C77C41E22C00EA1A00F51BF5 /* Pages.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77C41E12C00EA1A00F51BF5 /* Pages.swift */; };
+		C77EA2D92C0108B400BCB908 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77EA2D82C0108B400BCB908 /* Settings.swift */; };
 		C78DE2A22C008FA20067C844 /* FoodieApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78DE2A12C008FA20067C844 /* FoodieApp.swift */; };
 		C78DE2A42C008FA20067C844 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78DE2A32C008FA20067C844 /* ContentView.swift */; };
 		C78DE2A62C008FF40067C844 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C78DE2A52C008FF40067C844 /* Assets.xcassets */; };
@@ -42,6 +44,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C77C41E12C00EA1A00F51BF5 /* Pages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pages.swift; sourceTree = "<group>"; };
+		C77EA2D82C0108B400BCB908 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		C78DE29E2C008FA20067C844 /* Foodie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Foodie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C78DE2A12C008FA20067C844 /* FoodieApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodieApp.swift; sourceTree = "<group>"; };
 		C78DE2A32C008FA20067C844 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -122,6 +126,8 @@
 				C78DE2D62C009B5C0067C844 /* Cart.swift */,
 				C78DE2D82C00A50F0067C844 /* ShopItem.swift */,
 				C78DE2DA2C00A7A30067C844 /* Data.swift */,
+				C77C41E12C00EA1A00F51BF5 /* Pages.swift */,
+				C77EA2D82C0108B400BCB908 /* Settings.swift */,
 			);
 			path = Foodie;
 			sourceTree = "<group>";
@@ -281,11 +287,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C77C41E22C00EA1A00F51BF5 /* Pages.swift in Sources */,
 				C78DE2D52C009B410067C844 /* Login.swift in Sources */,
 				C78DE2DB2C00A7A30067C844 /* Data.swift in Sources */,
 				C78DE2AB2C008FF40067C844 /* Persistence.swift in Sources */,
 				C78DE2AE2C008FF40067C844 /* Foodie.xcdatamodeld in Sources */,
 				C78DE2A42C008FA20067C844 /* ContentView.swift in Sources */,
+				C77EA2D92C0108B400BCB908 /* Settings.swift in Sources */,
 				C78DE2D12C009AF70067C844 /* Shop.swift in Sources */,
 				C78DE2D92C00A5100067C844 /* ShopItem.swift in Sources */,
 				C78DE2D32C009B260067C844 /* Registration.swift in Sources */,

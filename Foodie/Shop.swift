@@ -25,23 +25,22 @@ struct Shop: View {
     var body: some View {
         NavigationView {
         
-            
-            /*SearchView(searchText: $searchText)
+            VStack(spacing: 5) {
+            SearchView(searchText: $searchText)
                 .frame(height:50)
                 .padding(.horizontal)
-            */
+            
             ScrollView() {
                 LazyVGrid(columns: columns, spacing: 30) {
-                    ForEach(0..<items.count, id:\.self) { item in
-                        ShopItem(imageName: items[item][0] as! String, title: items[item][1] as! String, price: items[item][2] as! Double, color: items[item][3] as! Color, selfIndex: item)
+                    ForEach(0..<filteredItems.count, id:\.self) { item in
+                        ShopItem(imageName: filteredItems[item][0] as! String, title: filteredItems[item][1] as! String, price: filteredItems[item][2] as! Double, color: filteredItems[item][3] as! Color, selfIndex: item)
                     }
                 }
             }.padding(.bottom, 15)
+                
+            }
         
         
-        .fullScreenCover(isPresented: $goToCart) {
-            Cart()
-        }
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
                 Button(action: {
@@ -51,19 +50,14 @@ struct Shop: View {
                     Text("Back")
                 }
             }
-            ToolbarItem(placement: .navigationBarTrailing) {
-                Button() {
-                    goToCart = true
-                }label: {
-                    Image(systemName: "cart")
-                }
-            }
+            
         }
+        //.searchable(text: $searchText, prompt: "Food and products")
+        .onChange(of: searchText) { newValue in filterItems(searchText: newValue)}
         
     }
         .navigationViewStyle(.stack)
-        .searchable(text: $searchText, prompt: "Food and products")
-        .onChange(of: searchText) { newValue in filterItems(searchText: newValue)}
+        
         
     }
     func filterItems(searchText: String){
@@ -78,7 +72,7 @@ struct Shop: View {
     }
 }
 
-/*struct SearchView : View {
+struct SearchView : View {
     
     @Binding var searchText: String
     
@@ -101,7 +95,7 @@ struct Shop: View {
         .cornerRadius(10)
         
     }
-}*/
+}
 
 struct Shop_Previews: PreviewProvider {
     static var previews: some View {

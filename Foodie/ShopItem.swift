@@ -27,7 +27,7 @@ struct ShopItem: View {
                     .frame(width: 80, height: 80)
                 Text(title)
                 Button() {
-                    //cartItems.append(shopItems[selfIndex])
+                    cartItems.append(shopItems[selfIndex])
                 } label: {
                     Text("$\(String(format: "%.2f", price))")
                         .foregroundColor(.white)
