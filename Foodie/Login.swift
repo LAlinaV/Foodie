@@ -68,7 +68,7 @@ struct Login: View {
                 }
                 .frame(width: 200, height: 35)
                 .fullScreenCover(isPresented: $isInputValid) {
-                    Shop()
+                    Pages()
                 }
             }
         }
