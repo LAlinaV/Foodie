@@ -52,7 +52,7 @@ struct Shop: View {
             }
             
         }
-        //.searchable(text: $searchText, prompt: "Food and products")
+        
         .onChange(of: searchText) { newValue in filterItems(searchText: newValue)}
         
     }
@@ -102,3 +102,4 @@ struct Shop_Previews: PreviewProvider {
         Shop()
     }
 }
+

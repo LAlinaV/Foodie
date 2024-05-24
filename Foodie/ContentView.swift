@@ -38,7 +38,7 @@ struct ContentView: View {
             
             .navigationViewStyle(StackNavigationViewStyle())
             .fullScreenCover(isPresented: $changeScreen) {
-                Pages()
+                Login()
             }
                 Button() {
                     changeScreen = true
@@ -68,3 +68,4 @@ struct ContentView_Previews: PreviewProvider {
 }
 
 }
+
