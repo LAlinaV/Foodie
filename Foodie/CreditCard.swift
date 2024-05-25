@@ -12,48 +12,52 @@ struct CardFrontView: View {
     let creditCardInfo: CreditCardInfo
     
     var body: some View {
-        VStack {
-            HStack {
-                Image(systemName: "checkmark.circle.fill")
+        if #available(iOS 15.0, *) {
+            VStack {
+                HStack {
+                    Image(systemName: "checkmark.circle.fill")
+                        .padding()
+                    Spacer()
+                    Text("VISA")
+                        .font(.system(size: 18, weight: .bold, design: .monospaced))
+                        .italic()
+                        .padding()
+                }
+                
+                Text(creditCardInfo.cardNumber.isEmpty ? " ": creditCardInfo.cardNumber)
+                    .font(.system(size: 26, weight: .bold, design: .rounded))
                     .padding()
+                
+                HStack {
+                    VStack(alignment: .leading) {
+                        Text("CARD HOLDER")
+                            .opacity(0.5)
+                            .font(.system(size: 14))
+                        Text(creditCardInfo.cardHolderName.isEmpty ? " ": creditCardInfo.cardHolderName)
+                    }
+                    
+                    Spacer()
+                    
+                    VStack(alignment: .leading) {
+                        Text("EXPIRES")
+                            .opacity(0.5)
+                            .font(.system(size: 14))
+                        Text(creditCardInfo.expirationDate.isEmpty ? " ": creditCardInfo.expirationDate)
+                    }
+                    
+                }.padding()
+                
                 Spacer()
-                Text("VISA")
-                    .font(.system(size: 18, weight: .bold, design: .monospaced))
-                    .italic()
-                    .padding()
             }
-            
-            Text(creditCardInfo.cardNumber.isEmpty ? " ": creditCardInfo.cardNumber)
-                .font(.system(size: 26, weight: .bold, design: .rounded))
-                .padding()
-            
-            HStack {
-                VStack(alignment: .leading) {
-                    Text("CARD HOLDER")
-                        .opacity(0.5)
-                    .font(.system(size: 14))
-                    Text(creditCardInfo.cardHolderName.isEmpty ? " ": creditCardInfo.cardHolderName)
-                }
-               
-                Spacer()
-                
-                VStack(alignment: .leading) {
-                    Text("EXPIRES")
-                        .opacity(0.5)
-                    .font(.system(size: 14))
-                    Text(creditCardInfo.expirationDate.isEmpty ? " ": creditCardInfo.expirationDate)
-                }
-                
-            }.padding()
-               
-            Spacer()
+            .foregroundStyle(.white)
+            .frame(width: 350, height: 250)
+            .background {
+                LinearGradient(colors: [.purple, .blue], startPoint: .topLeading, endPoint: .bottomTrailing)
+            }
+            .clipShape(RoundedRectangle(cornerRadius: 25.0, style: .continuous))
+        } else {
+            // Fallback on earlier versions
         }
-        .foregroundStyle(.white)
-        .frame(width: 350, height: 250)
-        .background {
-            LinearGradient(colors: [.purple, .blue], startPoint: .topLeading, endPoint: .bottomTrailing)
-        }
-        .clipShape(RoundedRectangle(cornerRadius: 25.0, style: .continuous))
     }
 }
 
@@ -63,6 +67,8 @@ struct CreditCardInfo {
     var expirationDate: String = ""
     var ccvCode: String = ""
 }
+
+@available(iOS 15.0, *)
 
 struct CheckoutFormView: View {
     
@@ -75,56 +81,67 @@ struct CheckoutFormView: View {
             TextField("Cardholder's Name", text: $creditCardInfo.cardHolderName)
             TextField("Card Number", text: $creditCardInfo.cardNumber)
             TextField("Expiry Date", text: $creditCardInfo.expirationDate)
-            TextField("CCV", text: $creditCardInfo.ccvCode)
-                .focused($isCCVFocused)
-                .onTapGesture {
-                    isCCVFocused = true
-                    onCCVTapped()
-                }
+            if #available(iOS 15.0, *) {
+                TextField("CCV", text: $creditCardInfo.ccvCode)
+                    .focused($isCCVFocused)
+                    .onTapGesture {
+                        isCCVFocused = true
+                        onCCVTapped()
+                    }
+            } else {
+                // Fallback on earlier versions
+            }
         }
         
     }
 }
 
+@available(iOS 15.0, *)
 struct CardBackView: View {
     
     let creditCardInfo: CreditCardInfo
     
+    @available(iOS 15.0, *)
     var body: some View {
-        VStack {
-            Rectangle()
-                .fill(.black)
-                .frame(maxWidth: .infinity, maxHeight: 22)
-                .padding([.top], 20)
-            
-            Spacer()
-            
-            HStack {
+        if #available(iOS 15.0, *) {
+            VStack {
+                Rectangle()
+                    .fill(.black)
+                    .frame(maxWidth: .infinity, maxHeight: 22)
+                    .padding([.top], 20)
                 
-                Text(" \(creditCardInfo.ccvCode)")
-                    .frame(width: 100, height: 33, alignment: .leading)
-                    .background(.white)
-                    .foregroundStyle(.black)
-                    .rotation3DEffect(
-                        .degrees(180),
-                        axis: (x: 0.0, y: 1.0, z: 0.0)
-                    ).padding([.leading, .trailing, .bottom], 20)
-                
-               
                 Spacer()
+                
+                HStack {
+                    
+                    Text(" \(creditCardInfo.ccvCode)")
+                        .frame(width: 100, height: 33, alignment: .leading)
+                        .background(.white)
+                        .foregroundStyle(.black)
+                        .rotation3DEffect(
+                            .degrees(180),
+                            axis: (x: 0.0, y: 1.0, z: 0.0)
+                        ).padding([.leading, .trailing, .bottom], 20)
+                    
+                    
+                    Spacer()
+                }
+                
+                
             }
-                
-                
+            .foregroundStyle(.white)
+            .frame(width: 350, height: 250)
+            .background {
+                LinearGradient(colors: [.purple, .blue], startPoint: .topLeading, endPoint: .bottomTrailing)
+            }
+            .clipShape(RoundedRectangle(cornerRadius: 25.0, style: .continuous))
+        } else {
+            // Fallback on earlier versions
         }
-        .foregroundStyle(.white)
-        .frame(width: 350, height: 250)
-        .background {
-            LinearGradient(colors: [.purple, .blue], startPoint: .topLeading, endPoint: .bottomTrailing)
-        }
-        .clipShape(RoundedRectangle(cornerRadius: 25.0, style: .continuous))
     }
 }
 
+@available(iOS 15.0, *)
 struct CreditCard: View {
    
     @State private var creditCardInfo = CreditCardInfo()
@@ -139,19 +156,27 @@ struct CreditCard: View {
                     CardFrontView(creditCardInfo: creditCardInfo)
                     
                 } else {
-                    CardBackView(creditCardInfo: creditCardInfo)
+                    if #available(iOS 15.0, *) {
+                        CardBackView(creditCardInfo: creditCardInfo)
+                    } else {
+                        // Fallback on earlier versions
+                    }
                 }
             }.rotation3DEffect(
                 .degrees(degrees),
                 axis: (x: 0.0, y: 1.0, z: 0.0)
             )
             Spacer()
-            CheckoutFormView(creditCardInfo: $creditCardInfo, onCCVTapped: {
-                withAnimation {
-                    degrees += 180
-                    flip.toggle()
-                }
-            })
+            if #available(iOS 15.0, *) {
+                CheckoutFormView(creditCardInfo: $creditCardInfo, onCCVTapped: {
+                    withAnimation {
+                        degrees += 180
+                        flip.toggle()
+                    }
+                })
+            } else {
+                // Fallback on earlier versions
+            }
         } .frame(height:600)
     }
 }
@@ -159,7 +184,11 @@ struct CreditCard: View {
 struct CreditCard_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            CreditCard()
+            if #available(iOS 15.0, *) {
+                CreditCard()
+            } else {
+                // Fallback on earlier versions
+            }
         }
     }
 }

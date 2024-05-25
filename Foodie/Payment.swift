@@ -41,7 +41,11 @@ struct Payment: View {
                     .datePickerStyle(GraphicalDatePickerStyle())
                 ZStack {
                     if selectedIndex == 0 {
-                    CreditCard()
+                        if #available(iOS 15.0, *) {
+                            CreditCard()
+                        } else {
+                            // Fallback on earlier versions
+                        }
                     }
                 }
                 Map(coordinateRegion: $region, showsUserLocation: true)
@@ -49,10 +53,14 @@ struct Payment: View {
                        // ContentViewModel.checkIfLocationServicesIsEnabled()
                     }
                     .frame(width:300, height:300)
-                TextField("Comment", text: $comment)
-                    .padding()
-                    .background(Color.mint)
-                    .cornerRadius(10)
+                if #available(iOS 15.0, *) {
+                    TextField("Comment", text: $comment)
+                        .padding()
+                        .background(Color.mint)
+                        .cornerRadius(10)
+                } else {
+                    // Fallback on earlier versions
+                }
                     
                 ZStack {
                     RoundedRectangle(cornerRadius: 15)

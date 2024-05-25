@@ -30,9 +30,10 @@ struct ShopItem: View {
                     cartItems.append(shopItems[selfIndex])
                 } label: {
                     Text("$\(String(format: "%.2f", price))")
-                        .foregroundColor(.white)
+                        .foregroundColor(.black)
                         .frame(width: 100, height: 40)
                         .background(color)
+                        .opacity(0.5)
                 }
             }
         }
