@@ -6,11 +6,17 @@
 //
 
 import SwiftUI
+import MapKit
 
 struct Payment: View {
     @Environment(\.presentationMode) var presentationMode
+    @State private var deliveryDate = Date()
     @State private var totalPrice = 0.00
     @State private var selectedIndex = 0
+    @State private var comment = ""
+    @State private var flip: Bool = false
+    @State private var degrees: Double = 0
+    @State private var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 37.331, longitude: -121.89), span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1))
     func calculateTotalPrice() {
         totalPrice = 0.00
         for i in 0..<cartItems.count {
@@ -28,6 +34,26 @@ struct Payment: View {
                     }
                     .pickerStyle(SegmentedPickerStyle())
                 }
+                
+                
+                
+                DatePicker("Delivery time", selection: $deliveryDate)
+                    .datePickerStyle(GraphicalDatePickerStyle())
+                ZStack {
+                    if selectedIndex == 0 {
+                    CreditCard()
+                    }
+                }
+                Map(coordinateRegion: $region, showsUserLocation: true)
+                    .onAppear{
+                       // ContentViewModel.checkIfLocationServicesIsEnabled()
+                    }
+                    .frame(width:300, height:300)
+                TextField("Comment", text: $comment)
+                    .padding()
+                    .background(Color.mint)
+                    .cornerRadius(10)
+                    
                 ZStack {
                     RoundedRectangle(cornerRadius: 15)
                         .foregroundColor(.green)
@@ -90,3 +116,5 @@ struct Payment_Previews: PreviewProvider {
         Payment()
     }
 }
+
+

@@ -71,6 +71,7 @@ struct Cart: View {
                             .bold()
                     }
                 }.offset(x: 80)
+                    .disabled(totalPrice == 0.00)
                     .fullScreenCover(isPresented: $showPaymentScreen) {
                         Payment()
             }
