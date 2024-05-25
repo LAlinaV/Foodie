@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		C77C41E22C00EA1A00F51BF5 /* Pages.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77C41E12C00EA1A00F51BF5 /* Pages.swift */; };
 		C77EA2D92C0108B400BCB908 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77EA2D82C0108B400BCB908 /* Settings.swift */; };
+		C782B31F2C01DB8C00895999 /* LaunchScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C782B31E2C01DB8C00895999 /* LaunchScreenView.swift */; };
+		C782B3212C01E06C00895999 /* Payment.swift in Sources */ = {isa = PBXBuildFile; fileRef = C782B3202C01E06B00895999 /* Payment.swift */; };
 		C78DE2A22C008FA20067C844 /* FoodieApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78DE2A12C008FA20067C844 /* FoodieApp.swift */; };
 		C78DE2A42C008FA20067C844 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78DE2A32C008FA20067C844 /* ContentView.swift */; };
 		C78DE2A62C008FF40067C844 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C78DE2A52C008FF40067C844 /* Assets.xcassets */; };
@@ -46,6 +48,9 @@
 /* Begin PBXFileReference section */
 		C77C41E12C00EA1A00F51BF5 /* Pages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pages.swift; sourceTree = "<group>"; };
 		C77EA2D82C0108B400BCB908 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		C782B31D2C01DA0C00895999 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		C782B31E2C01DB8C00895999 /* LaunchScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenView.swift; sourceTree = "<group>"; };
+		C782B3202C01E06B00895999 /* Payment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Payment.swift; sourceTree = "<group>"; };
 		C78DE29E2C008FA20067C844 /* Foodie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Foodie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C78DE2A12C008FA20067C844 /* FoodieApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodieApp.swift; sourceTree = "<group>"; };
 		C78DE2A32C008FA20067C844 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -114,6 +119,7 @@
 		C78DE2A02C008FA20067C844 /* Foodie */ = {
 			isa = PBXGroup;
 			children = (
+				C782B31D2C01DA0C00895999 /* Info.plist */,
 				C78DE2A12C008FA20067C844 /* FoodieApp.swift */,
 				C78DE2A32C008FA20067C844 /* ContentView.swift */,
 				C78DE2A52C008FF40067C844 /* Assets.xcassets */,
@@ -128,6 +134,8 @@
 				C78DE2DA2C00A7A30067C844 /* Data.swift */,
 				C77C41E12C00EA1A00F51BF5 /* Pages.swift */,
 				C77EA2D82C0108B400BCB908 /* Settings.swift */,
+				C782B31E2C01DB8C00895999 /* LaunchScreenView.swift */,
+				C782B3202C01E06B00895999 /* Payment.swift */,
 			);
 			path = Foodie;
 			sourceTree = "<group>";
@@ -288,6 +296,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				C77C41E22C00EA1A00F51BF5 /* Pages.swift in Sources */,
+				C782B31F2C01DB8C00895999 /* LaunchScreenView.swift in Sources */,
+				C782B3212C01E06C00895999 /* Payment.swift in Sources */,
 				C78DE2D52C009B410067C844 /* Login.swift in Sources */,
 				C78DE2DB2C00A7A30067C844 /* Data.swift in Sources */,
 				C78DE2AB2C008FF40067C844 /* Persistence.swift in Sources */,
@@ -460,9 +470,9 @@
 				DEVELOPMENT_TEAM = 2Y3BP8842X;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Foodie/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.7;
@@ -490,9 +500,9 @@
 				DEVELOPMENT_TEAM = 2Y3BP8842X;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Foodie/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.7;

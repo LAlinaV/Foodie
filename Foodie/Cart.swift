@@ -9,9 +9,15 @@
 import SwiftUI
 
 struct Cart: View {
+    func calculateTotalPrice() {
+        totalPrice = 0.00
+        for i in 0..<cartItems.count {
+            totalPrice += cartItems[i][2] as! Double
+        }
+    }
     
     @State var totalPrice = 0.00
-    
+    @State private var showPaymentScreen = false
     var body: some View {
         VStack {
             Text("My Cart")
@@ -53,7 +59,7 @@ struct Cart: View {
                         .padding(.leading, 60)
                 }
                 Button() {
-                    
+                    self.showPaymentScreen = true
                 } label: {
                     ZStack {
                         RoundedRectangle(cornerRadius: 10)
@@ -65,17 +71,15 @@ struct Cart: View {
                             .bold()
                     }
                 }.offset(x: 80)
+                    .fullScreenCover(isPresented: $showPaymentScreen) {
+                        Payment()
             }
             
         }.onAppear(perform: self.calculateTotalPrice)
     }
     
-    func calculateTotalPrice() {
-        totalPrice = 0.00
-        for i in 0..<cartItems.count {
-            totalPrice += cartItems[i][2] as! Double
-        }
     }
+    
 }
 
 struct Cart_Previews: PreviewProvider {
