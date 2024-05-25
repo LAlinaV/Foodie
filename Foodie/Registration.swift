@@ -2,6 +2,8 @@
 //  Foodie//
 //  Created by Алина on 24.05.24.//
 import SwiftUI
+import CryptoKit
+
 struct SecureTextField: View {
         @State private var isSecureField: Bool = true
     @Binding var text: String
@@ -31,6 +33,15 @@ struct SecureTextField: View {
         
     }
 
+func sha256(_ input: String) -> String {
+    let inputData = Data(input.utf8)
+    let hashedData = try! SHA256.hash(data: inputData)
+    let hashString = hashedData.compactMap {
+        String(format: "%02x", $0)
+    }.joined()
+    return hashString
+}
+
 struct Registration: View {
     @Environment(\.presentationMode) var presentationMode
     @State private var email = ""
@@ -41,6 +52,9 @@ struct Registration: View {
     @State private var isConfirmPasswordInputSecure = true
     @State private var isInputValid = false
     @State private var showAlert = false
+    @State public var isVisible = true
+    @Binding var isLogged: Bool
+    
     var body: some View {
         NavigationView {
         VStack(spacing: 20) {
@@ -95,9 +109,14 @@ struct Registration: View {
                         
                         UserDefaults.standard.setValue(email, forKey: "email")
                         UserDefaults.standard.setValue(login, forKey: "login")
-                        UserDefaults.standard.setValue(password, forKey: "password")
+                        UserDefaults.standard.setValue(sha256(password), forKey: "password")
                         isInputValid = true
                         showAlert = false
+                        
+                        self.presentationMode.wrappedValue.dismiss()
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                            isLogged = true
+                        }
                     }
                     else {
                         isInputValid = false
@@ -106,15 +125,13 @@ struct Registration: View {
                     
                 }) {
                     ZStack {
-                        RoundedRectangle(cornerRadius: 50)                            .foregroundColor(.green)
+                        RoundedRectangle(cornerRadius: 50)
+                            .foregroundColor(.green)
                         Text("Confirm")
                             .foregroundColor(.white)
                             .bold()                    }
                 }
                 .frame(width: 200, height: 35)
-                .fullScreenCover(isPresented: $isInputValid) {
-                    Pages()
-                }
                 
             }
         }        .padding()
@@ -143,7 +160,7 @@ struct Registration: View {
             
     struct Registration_Previews: PreviewProvider {
         static var previews: some View {
-                    Registration()
+            Registration(isLogged: .constant(false))
             
         }
             

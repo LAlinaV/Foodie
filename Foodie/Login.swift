@@ -13,6 +13,7 @@ struct Login: View {
     @State private var isPasswordInputSecure = true
     @State private var isInputValid = false
     @State private var showAlert = false
+    @Binding var isLogged: Bool
     @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
@@ -48,10 +49,16 @@ struct Login: View {
                 Button(action: {
                     if (!login.isEmpty && !password.isEmpty &&
                         (UserDefaults.standard.value(forKey: "login") != nil) && (UserDefaults.standard.value(forKey: "password") != nil) &&
-                        (UserDefaults.standard.value(forKey: "login") as! String == login) && (UserDefaults.standard.value(forKey: "password") as! String == password)) {
+                        (UserDefaults.standard.value(forKey: "login") as! String == login) && (UserDefaults.standard.value(forKey: "password") as! String == sha256(password))) {
 
                         isInputValid = true
                         showAlert = false
+                        
+                        self.presentationMode.wrappedValue.dismiss()
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                            isLogged = true
+                        }
+                        
                     }
                     else {
                         isInputValid = false
@@ -67,9 +74,6 @@ struct Login: View {
                     }
                 }
                 .frame(width: 200, height: 35)
-                .fullScreenCover(isPresented: $isInputValid) {
-                    Pages()
-                }
             }
         }
         .padding()
@@ -94,6 +98,6 @@ struct Login: View {
 
 struct Login_Previews: PreviewProvider {
     static var previews: some View {
-        Login()
+        Login(isLogged: .constant(false))
     }
 }

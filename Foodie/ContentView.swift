@@ -6,6 +6,7 @@ import CoreData
 struct ContentView: View {
     @State private var showLoginScreen = false
     @State private var showRegisterScreen = false
+    @State var isLogged = false
     
     var body: some View {
         NavigationView {
@@ -29,10 +30,12 @@ struct ContentView: View {
                         Text("Login")
                             .foregroundColor(.white)
                             .bold()
-                    }                }
+                    }
+                    
+                }
                 .frame(width: 200, height: 35)
                 .fullScreenCover(isPresented: $showLoginScreen) {
-                    Login()
+                    Login(isLogged: $isLogged)
                     
                 }
                 Button(action: {
@@ -45,14 +48,19 @@ struct ContentView: View {
                         Text("Register")
                             .foregroundColor(.white)
                             .bold()
-                    }                }
+                    }
+                    
+                }
                 .frame(width: 200, height: 35)
                 .fullScreenCover(isPresented: $showRegisterScreen) {
-                    Registration()
+                    Registration(isLogged: $isLogged)
                     
                 }
             }
             .navigationViewStyle(StackNavigationViewStyle())
+        }
+        .fullScreenCover(isPresented: $isLogged) {
+            Pages()
         }
         
     }
