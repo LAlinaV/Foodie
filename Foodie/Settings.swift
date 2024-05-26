@@ -17,12 +17,6 @@ struct Settings: View {
         NavigationView {
             ScrollView() {
             VStack(spacing: 30) {
-                HStack {
-                    Toggle(isOn: $isOn) {
-                    Text("Dark theme")
-                   }
-                    
-                }
                     Image(systemName: "person")
                         .resizable()
                         .frame(width: 120,height: 120)
@@ -35,6 +29,12 @@ struct Settings: View {
                         Text("myemeil@mail.com")
                     }
                 Spacer()
+                HStack {
+                    Toggle(isOn: $isOn) {
+                    Text("Dark theme")
+                   }
+                    
+                }.frame(width:350)
                 VStack(alignment: .leading, spacing: 5) {
                     Text("Login")
                         .font(.headline)
@@ -45,7 +45,7 @@ struct Settings: View {
                         .cornerRadius(10)
                         .border(Color.blue, width: 1)
                     
-                }
+                }.frame(width:350)
                 VStack(alignment: .leading, spacing: 5) {
                     Text("Email")
                         .font(.headline)
@@ -56,7 +56,7 @@ struct Settings: View {
                         .cornerRadius(10)
                         .border(Color.blue, width: 1)
                     
-                }
+                }.frame(width:350)
                 VStack(alignment: .leading, spacing: 5) {
                     Text("Password")
                         .font(.headline)
@@ -68,6 +68,7 @@ struct Settings: View {
                         .border(Color.blue, width: 1)
                     
                 }
+                .frame(width:350)
                 Spacer()
                     Button {
                         
