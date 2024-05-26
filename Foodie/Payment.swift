@@ -35,10 +35,6 @@ struct Payment: View {
                     .pickerStyle(SegmentedPickerStyle())
                 }
                 
-                
-                
-                DatePicker("Delivery time", selection: $deliveryDate)
-                    .datePickerStyle(GraphicalDatePickerStyle())
                 ZStack {
                     if selectedIndex == 0 {
                         if #available(iOS 15.0, *) {
@@ -48,6 +44,10 @@ struct Payment: View {
                         }
                     }
                 }
+                
+                DatePicker("Delivery time", selection: $deliveryDate)
+                    .datePickerStyle(GraphicalDatePickerStyle())
+                
                 Map(coordinateRegion: $region, showsUserLocation: true)
                     .onAppear{
                        // ContentViewModel.checkIfLocationServicesIsEnabled()
